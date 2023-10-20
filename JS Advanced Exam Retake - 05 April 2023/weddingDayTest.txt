@@ -1,0 +1,73 @@
+describe("weddingDay", function() {
+  describe("pickVenue", function() {
+    it("should return 'This venue meets the requirements, with capacity of 150 guests and 100$ cover.' when capacity is 150, pricePerGuest is 100, and location is 'Varna'", function() {
+      const result = weddingDay.pickVenue(150, 100, 'Varna');
+      expect(result).to.equal('This venue meets the requirements, with capacity of 150 guests and 100$ cover.');
+    });
+
+    it("should return 'This venue does not meet your requirements!' when capacity is 100, pricePerGuest is 150, and location is 'Varna'", function() {
+      const result = weddingDay.pickVenue(100, 150, 'Varna');
+      expect(result).to.equal('This venue does not meet your requirements!');
+    });
+
+    it("should throw an error with message 'Invalid Information!' when capacity is '200', pricePerGuest is 120, and location is 'Varna'", function() {
+      expect(() => weddingDay.pickVenue('200', 120, 'Varna')).to.throw('Invalid Information!');
+    });
+
+    it("should throw an error with message 'The location of this venue is not in the correct area!' when capacity is 200, pricePerGuest is 120, and location is 'Sofia'", function() {
+      expect(() => weddingDay.pickVenue(200, 120, 'Sofia')).to.throw('The location of this venue is not in the correct area!');
+    });
+  });
+
+  describe("otherSpendings", function() {
+    it("should return 'You spend 1200$ for wedding decoration and photography with 15% discount!' when weddingDecoration is ['flowers'] , photography is ['pictures'], and discount is true", function() {
+      const result = weddingDay.otherSpendings(['flowers'], ['pictures'], true);
+      expect(result).to.equal('You spend 1200$ for wedding decoration and photography with 15% discount!');
+    });
+
+    it("should return 'You spend 1700$ for wedding decoration and photography!' when weddingDecoration is ['Fabric drapes and curtains'], photography is ['video'], and discount is false", function() {
+      const result = weddingDay.otherSpendings(['Fabric drapes and curtains'], ['video'], false);
+      expect(result).to.equal('You spend 1700$ for wedding decoration and photography!');
+    });
+
+    it("should throw an error with message 'Invalid Information!' when weddingDecoration is 'flowers', photography is ['pictures'], and discount is true", function() {
+      expect(() => weddingDay.otherSpendings('flowers', ['pictures'], true)).to.throw('Invalid Information!');
+    });
+
+    it("should throw an error with message 'Invalid Information!' when weddingDecoration is ['flowers'], photography is 'pictures', and discount is true", function() {
+      expect(() => weddingDay.otherSpendings(['flowers'], 'pictures', true)).to.throw('Invalid Information!');
+    });
+
+    it("should throw an error with message 'Invalid Information!' when weddingDecoration is ['flowers'], photography is ['pictures'], and discount is 'true'", function() {
+      expect(() => weddingDay.otherSpendings(['flowers'], ['pictures'], 'true')).to.throw('Invalid Information!');
+    });
+  });
+
+  describe("tableDistribution", function() {
+    it("should return 'There is only 5 people on every table, you can join some tables.' when guests is 30 and tables is 6", function() {
+      const result = weddingDay.tableDistribution(30, 6);
+      expect(result).to.equal('There is only 5 people on every table, you can join some tables.');
+    });
+
+    it("should return 'You have 10 tables with 8 guests on table.' when guests is 80 and tables is 10", function() {
+      const result = weddingDay.tableDistribution(80, 10);
+      expect(result).to.equal('You have 10 tables with 8 guests on table.');
+    });
+
+    it("should throw an error with message 'Invalid Information!' when guests is '100', tables is 10", function() {
+      expect(() => weddingDay.tableDistribution('100', 10)).to.throw('Invalid Information!');
+    });
+
+    it("should throw an error with message 'Invalid Information!' when guests is 100, tables is '10'", function() {
+      expect(() => weddingDay.tableDistribution(100, '10')).to.throw('Invalid Information!');
+    });
+
+    it("should throw an error with message 'Invalid Information!' when guests is -100, tables is 10", function() {
+      expect(() => weddingDay.tableDistribution(-100, 10)).to.throw('Invalid Information!');
+    });
+
+    it("should throw an error with message 'Invalid Information!' when guests is 100, tables is -10", function() {
+      expect(() => weddingDay.tableDistribution(100, -10)).to.throw('Invalid Information!');
+    });
+  });
+});

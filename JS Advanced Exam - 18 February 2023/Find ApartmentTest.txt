@@ -1,0 +1,85 @@
+describe("findNewApartment", function() {
+  describe("isGoodLocation", function() {
+    it("should return 'You can go on home tour!' if city is 'Sofia' and nearPublicTransportation is true", function() {
+      expect(findNewApartment.isGoodLocation("Sofia", true)).to.equal("You can go on home tour!");
+    });
+
+    it("should return 'There is no public transport in area.' if city is 'Sofia' and nearPublicTransportation is false", function() {
+      expect(findNewApartment.isGoodLocation("Sofia", false)).to.equal("There is no public transport in area.");
+    });
+
+    it("should return 'This location is not suitable for you.' if city is 'Burgas'", function() {
+      expect(findNewApartment.isGoodLocation("Burgas", true)).to.equal("This location is not suitable for you.");
+    });
+
+    it("should throw an error if city is not a string", function() {
+      expect(() => {
+        findNewApartment.isGoodLocation(123, true)
+      }).to.throw("Invalid input!");
+    });
+
+    it("should throw an error if nearPublicTransportation is not a boolean", function() {
+      expect(() => {
+        findNewApartment.isGoodLocation("Sofia", "true")
+      }).to.throw("Invalid input!");
+    });
+  });
+
+  describe("isLargeEnough", function() {
+    it("should return '100, 120' if apartments is [80, 100, 120] and minimalSquareMeters is 90", function() {
+      expect(findNewApartment.isLargeEnough([80, 100, 120], 90)).to.equal("100, 120");
+    });
+
+    it("should throw an error if apartments is not an array", function() {
+      expect(() => {
+        findNewApartment.isLargeEnough("apartments", 90)
+      }).to.throw("Invalid input!");
+    });
+
+    it("should throw an error if apartments is an empty array", function() {
+      expect(() => {
+        findNewApartment.isLargeEnough([], 90)
+      }).to.throw("Invalid input!");
+    });
+
+    it("should throw an error if minimalSquareMeters is not a number", function() {
+      expect(() => {
+        findNewApartment.isLargeEnough([80, 100, 120], "90")
+      }).to.throw("Invalid input!");
+    });
+  });
+
+  describe("isItAffordable", function() {
+    it("should return 'You can afford this home!' if price is 150000 and budget is 200000", function() {
+      expect(findNewApartment.isItAffordable(150000, 200000)).to.equal("You can afford this home!");
+    });
+
+    it("should return 'You don't have enough money for this house!' if price is 300000 and budget is 200000", function() {
+      expect(findNewApartment.isItAffordable(300000, 200000)).to.equal("You don't have enough money for this house!");
+    });
+
+    it("should throw an error if price is not a number", function() {
+      expect(() => {
+        findNewApartment.isItAffordable("price", 200000)
+      }).to.throw("Invalid input!");
+    });
+
+    it("should throw an error if budget is not a number", function() {
+      expect(() => {
+        findNewApartment.isItAffordable(150000, "200000")
+      }).to.throw("Invalid input!");
+    });
+
+    it("should throw an error if price is less than or equal to 0", function() {
+      expect(() => {
+        findNewApartment.isItAffordable(-150000, 200000)
+      }).to.throw("Invalid input!");
+    });
+
+    it("should throw an error if budget is less than or equal to 0", function() {
+      expect(() => {
+        findNewApartment.isItAffordable(150000, 0)
+      }).to.throw("Invalid input!");
+    });
+  });
+});
