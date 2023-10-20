@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "chai": "^4.3.7",
+    "i": "^0.3.7",
+    "mocha": "^10.2.0"
+  },
+  "name": "lottery",
+  "version": "1.0.0",
+  "main": "Lottery.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
