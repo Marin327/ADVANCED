@@ -1,5 +1,3 @@
-window.addEventListener('load', solve);
-
 function solve() {
     let reservationSection = document.querySelector(".info-list");
     let confrmSection = document.querySelector(".confirm-list");
