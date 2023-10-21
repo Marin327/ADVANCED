@@ -1,5 +1,3 @@
-window.addEventListener('load', solve);
-
 function solve() {
 const form = document.querySelector('form');
 const nextButton = document.getElementById('next-btn');
@@ -183,10 +181,9 @@ document.addEventListener('click', function (event) {
     nextButton.disabled = false;
   }
 });
-
-
 };
 
+   
 
     
     
