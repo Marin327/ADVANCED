@@ -81,16 +81,6 @@ class OnlineShop {
 
 }
 
-const myOnlineShop = new OnlineShop(500)
-console.log(myOnlineShop.loadingStore('headphones', 10, 200));
-console.log(myOnlineShop.loadingStore('laptop', 5, 200));
-
-console.log(myOnlineShop.quantityCheck('headphones', 10));
-console.log(myOnlineShop.quantityCheck('laptop', 10));
-
-console.log(myOnlineShop.sellProduct('headphones'));
-console.log(myOnlineShop.sellProduct('laptop'));
-console.log(myOnlineShop.revision());
 
 
 
