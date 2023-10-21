@@ -1,6 +1,3 @@
-onst {assert} = require('chai');
-const chooseYourCar = require('./chooseYourCar');
-
 describe('ChooseYourCar test suit', () => {
 
     describe('choosingType ', () => {
