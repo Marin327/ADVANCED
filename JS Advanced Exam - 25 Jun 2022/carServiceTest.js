@@ -1,5 +1,4 @@
-const {assert} = require('chai');
-const {carService} = require('./car-service');
+
 
 describe("Car service test suit", function () {
     describe("isItExpensive", function () {
